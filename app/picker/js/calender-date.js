@@ -55,9 +55,20 @@
         self.moveCalenderAnimation='';
 
         self.format = angular.isUndefined(self.format) ? 'MM-DD-YYYY': self.format;
-        self.initialDate =	angular.isUndefined(self.initialDate) ? moment() : moment(self.initialDate, self.format);
 
-        self.currentDate = self.initialDate.clone();
+        // This method is used to apply styling to enabled months in year view
+        // Returns true if the month is enabled and can be clicked, otherwise false
+        self.isMonthEnabled = function(yr, mth) {
+            var instance = moment([yr, mth]);
+            if (self.restrictToMinDate && instance.endOf('month').isBefore(self.minDate)) {
+                return false;
+            }
+            if (self.restrictToMaxDate && instance.startOf('month').isAfter(self.maxDate)) {
+                return false;
+            }
+            return true;
+        }
+
         if(self.restrictToMinDate){
              if(!moment.isMoment(self.minDate)){
                 self.minDate = moment(self.minDate, self.format);
@@ -81,7 +92,7 @@
         self.yearItems = {
             currentIndex_: 0,
             PAGE_SIZE: 7,
-            START: 1900,
+            START: moment().subtract(18, 'month').year(),
             getItemAtIndex: function(index) {
                 if(this.currentIndex_ < index){
                     this.currentIndex_ = index;
@@ -93,7 +104,20 @@
             }
         };
 
-        self.init();
+        if (moment.isMoment(self.minDate)) {
+            self.yearItems.START = self.minDate.year();
+        }
+
+        $scope.$watch("initialDate", function(nv){
+            if(!!!nv){
+                return ;
+            }
+
+            self.initialDate =  angular.isUndefined(nv) ? moment() : moment(nv, self.format);
+            self.currentDate = self.initialDate.clone();
+
+            self.init();
+        })
     }
 
     CalenderCtrl.prototype.setInitDate = function(dt) {
@@ -272,6 +296,8 @@
         
         var startIndex = moment().day(self.startDay).day(), count = 0;
         
+        self.dateCellHeader.length = 0 ;
+
         for (var key in daysByName) {
             self.dateCellHeader.push(daysByName[ keys[ (count + startIndex) % (keys.length)] ]);
             count++; // Don't forget to increase count.
@@ -283,13 +309,13 @@
 
     CalenderCtrl.prototype.changeView = function(view){
         var self = this;
-        if(self.disableYearSelection){
-            return;
-        }else{
+        if(self.disableYearSelection===false || self.disableYearSelection==="false"){
             if(view==='YEAR_MONTH'){
                 self.showYear();
             }
             self.view =view;
+        }else{
+            return;
         }
     }
 
@@ -300,9 +326,11 @@
 
     CalenderCtrl.prototype.changeYear = function(yr, mn){
         var self = this;
-        self.initialDate.year(yr).month(mn);
-        self.buildDateCells();
-        self.view='DATE';
+        if (self.isMonthEnabled(yr, mn)) {
+            self.initialDate.year(yr).month(mn);
+            self.buildDateCells();
+            self.view='DATE';
+        }
     }
 
     /*
