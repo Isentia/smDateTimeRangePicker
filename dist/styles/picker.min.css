@@ -104,7 +104,8 @@
       .date-picker .year-container .year-md-repeat .repeated-item {
         box-sizing: border-box;
         height: 70px;
-        margin: 0 10px; }
+        margin: 0 10px;
+        position: relative; }
         .date-picker .year-container .year-md-repeat .repeated-item .year {
           margin: 0 10px;
           display: flex;
@@ -124,7 +125,11 @@
         .date-picker .year-container .year-md-repeat .repeated-item .month-row {
           display: flex;
           height: 35px;
-          float: right; }
+          position: absolute;
+          top: 0;
+          right: 0; }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row + .month-row {
+            top: 35px; }
           .date-picker .year-container .year-md-repeat .repeated-item .month-row .month {
             outline: none;
             width: 30px;
@@ -140,9 +145,14 @@
             .date-picker .year-container .year-md-repeat .repeated-item .month-row .month.disabled {
               pointer-events: none;
               color: rgba(0, 0, 0, 0.38); }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row .month-enabled {
+            color: #2196F3; }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row .month-selected {
+            color: #fff;
+            background-color: #2196F3; }
         .date-picker .year-container .year-md-repeat .repeated-item .selected-year {
-          font-size: 18px;
-          color: blue; }
+          font-size: 1.2em;
+          color: #2196F3; }
   .date-picker .date-container .navigation {
     height: 40px; }
     .date-picker .date-container .navigation .md-button {
@@ -222,6 +232,7 @@
     text-align: center;
     line-height: 35px; }
     .range-picker .custom-select.show-calender > .tab-head span {
+      outline: none;
       color: #ccc1c1;
       width: 50%; }
       .range-picker .custom-select.show-calender > .tab-head span.active {
@@ -468,7 +479,8 @@
       .date-picker .year-container .year-md-repeat .repeated-item {
         box-sizing: border-box;
         height: 70px;
-        margin: 0 10px; }
+        margin: 0 10px;
+        position: relative; }
         .date-picker .year-container .year-md-repeat .repeated-item .year {
           margin: 0 10px;
           display: flex;
@@ -488,7 +500,11 @@
         .date-picker .year-container .year-md-repeat .repeated-item .month-row {
           display: flex;
           height: 35px;
-          float: right; }
+          position: absolute;
+          top: 0;
+          right: 0; }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row + .month-row {
+            top: 35px; }
           .date-picker .year-container .year-md-repeat .repeated-item .month-row .month {
             outline: none;
             width: 30px;
@@ -504,9 +520,14 @@
             .date-picker .year-container .year-md-repeat .repeated-item .month-row .month.disabled {
               pointer-events: none;
               color: rgba(0, 0, 0, 0.38); }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row .month-enabled {
+            color: #2196F3; }
+          .date-picker .year-container .year-md-repeat .repeated-item .month-row .month-selected {
+            color: #fff;
+            background-color: #2196F3; }
         .date-picker .year-container .year-md-repeat .repeated-item .selected-year {
-          font-size: 18px;
-          color: blue; }
+          font-size: 1.2em;
+          color: #2196F3; }
   .date-picker .date-container .navigation {
     height: 40px; }
     .date-picker .date-container .navigation .md-button {
@@ -586,6 +607,7 @@
     text-align: center;
     line-height: 35px; }
     .range-picker .custom-select.show-calender > .tab-head span {
+      outline: none;
       color: #ccc1c1;
       width: 50%; }
       .range-picker .custom-select.show-calender > .tab-head span.active {

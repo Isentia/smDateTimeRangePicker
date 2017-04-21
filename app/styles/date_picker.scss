@@ -157,6 +157,7 @@ $aniimation-duration:			1s;
 				box-sizing: border-box;
 				height: 70px;
 				margin: 0 10px;
+				position: relative;
  				.year{
  					margin: 0 10px;
  					display: flex;
@@ -180,7 +181,13 @@ $aniimation-duration:			1s;
  				.month-row{
  					display: flex;
  					height: 35px;
- 					float: right;
+ 					position: absolute;
+ 					top: 0;
+ 					right: 0;
+
+ 					& + .month-row {
+						top: 35px;
+ 					}
  					.month{
  						outline: none;
 					    width: 30px;
@@ -200,10 +207,17 @@ $aniimation-duration:			1s;
 							color: rgba(0,0,0,0.38);
 						}
 					}
+					.month-enabled {
+						color: #2196F3;
+					}
+					.month-selected {
+						color: #fff;
+						background-color: #2196F3;
+					}
  				}
  				.selected-year{
-					font-size: 18px;
-					color:blue;
+					font-size: 1.2em;
+					color: #2196F3;
 				}
 			}
 		}
@@ -327,6 +341,7 @@ $aniimation-duration:			1s;
 				text-align: center;
 				line-height: 35px;
 				span{
+					outline: none;
 					color:$disabled-date-text-color;
 					width: 50%;
 					&.active{
