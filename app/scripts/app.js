@@ -8,6 +8,8 @@ angular
     'ngMaterial',
     'smDateTimeRangePicker'
   ])
+  .constant('moment', moment)
+  .constant('alerts', { error: function() { console.error.apply(console, arguments); }})
   .run(function($http,$templateCache) {
       $http.get("views/massages.html")
       .then(function(response) {
@@ -49,6 +51,14 @@ angular
     }).state('range-picker-demo', {
             url: '/range-picker-demo',  
             templateUrl: 'views/range-picker-demo.html',
+            controller: 'MainCtrl',
+            controllerAs : 'vm',
+            data: {
+                title: 'Range Picker Demo',
+            }            
+    }).state('time-range-picker-demo', {
+            url: '/time-range-picker-demo',  
+            templateUrl: 'views/time-range-picker-demo.html',
             controller: 'MainCtrl',
             controllerAs : 'vm',
             data: {

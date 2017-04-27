@@ -54,6 +54,10 @@
             type: 'link',
             state: 'range-picker-demo'
           },{
+            name: 'Time Demo',
+            type: 'link',
+            state: 'time-range-picker-demo'
+          },{
             name: 'API',
             type: 'link',
             state: 'range-picker-api'

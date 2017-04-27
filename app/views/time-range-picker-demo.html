@@ -1,0 +1,27 @@
+<form name="test" ng-submit="vm.save()" novalidate>
+<md-content  class="md-whiteframe-z2" layout-padding>
+    <div>
+    	<h2 class="md-title">Date-Time Range Picker</h2>
+	    <div layout="row">
+	        <sm-range-picker
+	                fname="dayOfPay"
+	                label="Date of Pay"
+	                form="test"
+	                min-date="11-10-2015"
+	                ng-model="vm.employee.dateOfPay1"
+	                flex="50"
+	                is-required="true"
+	                format="D MMM YYYY HH:mm"
+	                divider="To"
+	                mode="date-time"
+	                week-start-day="Monday"
+	                custom-to-home="true"
+	                >
+	        </sm-range-picker>
+	    </div>
+    </div>
+
+    
+
+	</md-content>
+</form>
