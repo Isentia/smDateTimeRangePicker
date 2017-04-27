@@ -4,14 +4,14 @@
             <div class="date-display">
                 <input type="text" id='text_start_date' class="form-control text-input"
                        ng-model-options="{ debounce: 200 }"
-                       date-input ng-model="vm.startDate" placeholder="Start date"
+                       date-input="{{vm.format}}" ng-model="vm.startDate" placeholder="Start date"
                        ng-focus='vm.setTextFocus(0)'>
                 </input>
             </div>
             <div class="date-display">
                 <input type="text" id='text_end_date' class="form-control text-input"
                        ng-model-options="{ debounce: 200 }"
-                       date-input ng-model="vm.endDate" placeholder="End date"
+                       date-input="{{vm.format}}" ng-model="vm.endDate" placeholder="End date"
                        ng-focus='vm.setTextFocus(1)'>
                 </input>
             </div>
@@ -46,7 +46,7 @@
                          initial-date="vm.startDate.format(format)"
                          date-select-call="vm.startDateSelected(date)">
             </sm-calender>
-            <sm-time ng-show="vm.view==='TIME'" ng-model="selectedStartTime" time-select-call="vm.startTimeSelected(time)"> </sm-time>
+            <sm-time ng-show="vm.view==='TIME'" time-select-call="vm.startTimeSelected(time)"> </sm-time>
         </div>
         <div ng-if="vm.selectedTabIndex===1" ng-model="vm.endDate">
             <div layout="row" ng-if="vm.allowEmptyDates" ng-click="vm.endDateSelected()" layout-align="end">
@@ -61,7 +61,7 @@
                           initial-date="vm.endDate.format(format)"
                           date-select-call="vm.endDateSelected(date)">
             </sm-calender>
-            <sm-time ng-show="vm.view==='TIME'" ng-model="selectedEndTime" time-select-call="vm.endTimeSelected(time)">
+            <sm-time ng-show="vm.view==='TIME'" time-select-call="vm.endTimeSelected(time)">
             </sm-time>
         </div>
     </div>

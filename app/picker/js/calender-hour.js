@@ -62,16 +62,22 @@
 
 	TimePickerCtrl.prototype.configureNgModel = function(ngModelCtrl) {
 		this.ngModelCtrl = ngModelCtrl;
+		/*
 		var self = this;
 		ngModelCtrl.$render = function() {
 			self.ngModelCtrl.$viewValue= self.currentDate;
-		};
+		};*/
 	};
 
 
 	TimePickerCtrl.prototype.setNgModelValue = function(date) {
 		var self = this;
-		self.ngModelCtrl.$setViewValue(date);
+
+		var value = self.ngModelCtrl.$viewValue.clone();
+
+		value.hour(date.hour()).minute(date.minute());
+
+		self.ngModelCtrl.$setViewValue(value);
 		self.ngModelCtrl.$render();
 	};
 

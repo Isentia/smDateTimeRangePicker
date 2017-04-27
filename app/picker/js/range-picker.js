@@ -158,6 +158,7 @@ RangePickerCtrl.prototype.showCustomView = function(){
 RangePickerCtrl.prototype.setDateView = function(idx){
     if(this.showCustom){
         this.selectedTabIndex = idx ;
+        this.view = 'DATE';
     }
 }
 
@@ -227,14 +228,13 @@ RangePickerCtrl.prototype.startDateSelected = function(date){
     this.scope.$emit('range-picker:startDateSelected');
     this.setNextView();
 
-    if (this.endDate && this.endDate.diff(this.startDay, 'ms') < 0) {
+    if (this.endDate && this.endDate.diff(this.startDate, 'ms') < 0) {
         this.endDate = date;
     }
 }
 
 RangePickerCtrl.prototype.startTimeSelected = function(time){
-
-    this.startDate.hour(time.hour()).minute(time.minute());
+    this.startDate = this.startDate.clone().hour(time.hour()).minute(time.minute());
     this.minStartToDate = angular.copy(this.startDate);
     this.scope.$emit('range-picker:startTimeSelected');
     this.setNextView();
@@ -242,7 +242,7 @@ RangePickerCtrl.prototype.startTimeSelected = function(time){
 
 
 RangePickerCtrl.prototype.endDateSelected = function(date){
-    this.endDate = date.endOf('day');
+    this.endDate = moment(date);//date.endOf('day');
     this.scope.$emit('range-picker:endDateSelected');
     if(this.closeOnSelect && this.mode==='date'){
         this.setNgModelValue(this.startDate, this.divider, this.endDate);
@@ -252,7 +252,7 @@ RangePickerCtrl.prototype.endDateSelected = function(date){
 }
 
 RangePickerCtrl.prototype.endTimeSelected = function(time){
-    this.endDate.hour(time.hour()).minute(time.minute());
+    this.endDate = this.endDate.clone().hour(time.hour()).minute(time.minute());
     this.scope.$emit('range-picker:endTimeSelected');
     if(this.closeOnSelect && this.mode==='date-time'){
         this.setNgModelValue(this.startDate, this.divider, this.endDate);

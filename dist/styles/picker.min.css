@@ -371,6 +371,15 @@
     /* Safari */
     transform: top; } }
 
+.date-display .text-input {
+  background-color: #fff;
+  border: none;
+  font-size: 0.8em;
+  padding: 0 12px;
+  margin-bottom: 0;
+  height: 42px;
+  width: 100%; }
+
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -745,6 +754,15 @@
     -webkit-transform: top;
     /* Safari */
     transform: top; } }
+
+.date-display .text-input {
+  background-color: #fff;
+  border: none;
+  font-size: 0.8em;
+  padding: 0 12px;
+  margin-bottom: 0;
+  height: 42px;
+  width: 100%; }
 
 .margin-0 {
   margin: 0px; }
