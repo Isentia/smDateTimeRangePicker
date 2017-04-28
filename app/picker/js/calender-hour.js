@@ -19,7 +19,6 @@
 				var ngModelCtrl = ctrls[0];
 				var calCtrl = ctrls[1];
 				calCtrl.configureNgModel(ngModelCtrl);
-
 			}
 		}
 	}
@@ -34,7 +33,7 @@
 		self.hourItems =[];
 		self.minuteCells =[];
 		self.format = angular.isUndefined(self.format) ? 'HH:mm': self.format;
-		self.initialDate =	angular.isUndefined(self.initialDate)? moment() : moment(self.initialDate, self.format);
+		self.initialDate =	angular.isUndefined(self.initialDate)? moment() : moment(self.initialDate);
 		self.currentDate = self.initialDate.clone();
 		self.hourSet =false;
 		self.minuteSet = false;
