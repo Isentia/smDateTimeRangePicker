@@ -11,7 +11,7 @@
 							ng-click="vm.setHour(h.hour)" 							
 							ng-class="{'md-primary': h.isCurrent,
 									'md-primary md-raised' :h.hour===vm.currentDate.hour()}">
-							{{h.hour}}
+							{{h.hourText}}
 						</md-button>
 			</div>
 			</md-virtual-repeat-container>		     
@@ -21,7 +21,7 @@
 							ng-click="vm.setMinute(m.minute)" 							
 							ng-class="{'md-primary': m.isCurrent,
 								'md-primary md-raised' :m.minute===vm.currentDate.minute()}">
-							{{m.minute}}
+							{{m.minuteText}}
 						</md-button>
 				</div>
 			</md-virtual-repeat-container>		     

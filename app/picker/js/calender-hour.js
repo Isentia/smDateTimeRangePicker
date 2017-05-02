@@ -89,6 +89,7 @@
 		for (var i = 0 ; i <= 23; i++) {
 			var hour={
 				hour : i,
+				hourText: ('0' + i).substr(-2),
 				isCurrent :(self.initialDate.hour())=== i
 			}
 			self.hourItems.push(hour);
@@ -98,9 +99,10 @@
 	TimePickerCtrl.prototype.buidMinuteCells = function(){
 		var self = this;
 		self.minuteTopIndex	= self.initialDate.minute();
-		for (var i = 0 ; i <= 59; i++) {
+		for (var i = 0 ; i <= 59; i+=5) {
 			var minute = {
 				minute : i,
+				minuteText: ('0' + i).substr(-2),
 				isCurrent : (self.initialDate.minute())=== i,
 			}
 			self.minuteCells.push(minute);
