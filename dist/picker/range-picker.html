@@ -18,7 +18,7 @@
         </div>
     </md-toolbar>
 
-    <div layout="column" class="pre-select" role="button" ng-show="!vm.showCustom">
+    <div layout="column" class="pre-select" role="button" ng-if="!vm.showCustom">
         <div class="form-group">
             <label class="text-center form-label">Display coverage</label>
             <select class="form-control" ng-options="option.key for option in vm.dateTypeList track by option.value" ng-model="vm.dateType">
@@ -28,7 +28,7 @@
         </md-button>
         <md-button aria-label="Custom Range" ng-click="vm.showCustomView()">Custom Range</md-button>
     </div>
-    <div layout="column" class="custom-select" ng-show="vm.showCustom" ng-class="{'show-calender': vm.showCustom}">
+    <div layout="column" class="custom-select" ng-if="vm.showCustom" ng-class="{'show-calender': vm.showCustom}">
         <div layout="row" class="tab-head remove-span-focus">
             <span style='cursor:pointer;' ng-class="{'active moveLeft':vm.selectedTabIndex===0}" ng-click='vm.setDateView(0)'>{{vm.rangeCustomStartEnd[0]}}</span>
             <span style='cursor:pointer;' ng-class="{'active moveLeft':vm.selectedTabIndex===1}" ng-click='vm.setDateView(1)'>{{vm.rangeCustomStartEnd[1]}}</span>

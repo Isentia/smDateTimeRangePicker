@@ -20,6 +20,31 @@ function MainCtrl($scope, $timeout, $mdSidenav, $mdUtil, $log, $state, $mdDialog
         endDate: moment()
     }]
 
+    vm.dateTypeList = [
+      {
+        "key": "Aired / Published",
+        "value": 'published'
+      },
+      {
+        "key": "Delivered",
+        "value": "delivered"
+      }
+    ];
+
+    vm.dateType = vm.dateTypeList[1];
+
+    $scope.$watch(function() {
+        return vm.dateType;
+    }, function(nv, ov) {
+        if (nv.value === 'published') {
+            vm.mode = 'date';
+            vm.format = 'D MMM YYYY';
+        } else {
+            vm.mode = 'date-time';
+            vm.format = 'D MMM YYYY HH:mm';
+        }
+    })
+
     vm.clearInput = function() {
         vm.dateOfBirth = '';
     }

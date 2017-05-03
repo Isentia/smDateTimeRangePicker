@@ -11,11 +11,13 @@
 	                ng-model="vm.employee.dateOfPay1"
 	                flex="50"
 	                is-required="true"
-	                format="D MMM YYYY HH:mm"
+	                format="vm.format"
 	                divider="To"
-	                mode="date-time"
+	                mode="vm.mode"
 	                week-start-day="Monday"
 	                custom-to-home="true"
+	                date-type="vm.dateType"
+	                date-type-list="vm.dateTypeList"
 	                >
 	        </sm-range-picker>
 	    </div>

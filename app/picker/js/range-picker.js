@@ -4,7 +4,7 @@ function smRangePicker (picker){
         restrict : 'E',
         require : ['^?ngModel', 'smRangePicker'],
         scope:{
-            format:'@',
+            format:'=',
             divider: '@',
             initStartDate: '@',
             initEndDate: '@',
@@ -13,7 +13,7 @@ function smRangePicker (picker){
             weekStartDay :'@',
             customToHome: '@',
             closeOnSelect: '@',
-            mode: '@',
+            mode: '=',
             showCustom:'@',
             customList: '=',
             minDate : '@',
@@ -428,6 +428,8 @@ RangePickerCtrl.prototype.cancel = function() {
         self.showCustom=false;
         self.scope.$emit('range-picker:close');
     }
+
+    self.view = 'DATE';
 
     if (self.lastRange) {
         self.startDate = self.lastRange.startDate.clone();
