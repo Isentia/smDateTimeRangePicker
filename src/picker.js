@@ -1876,7 +1876,7 @@ RangePickerCtrl.prototype.startTimeSelected = function(time){
 
 
 RangePickerCtrl.prototype.endDateSelected = function(date){
-    this.endDate = moment(date);//date.endOf('day');
+    this.endDate = this.endDate.clone().month(date.month()).date(date.date());
     this.lastRange = { startDate: this.startDate.clone(), endDate: this.endDate.clone() };
     this.scope.$emit('range-picker:endDateSelected');
     if(this.closeOnSelect && this.mode==='date'){
