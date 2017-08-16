@@ -122,7 +122,6 @@
 
             self.initialDate =  angular.isUndefined(nv) ? moment() : moment(nv, self.format);
             self.currentDate = self.initialDate.clone();
-
             self.init();
         })
     }
@@ -167,6 +166,10 @@
         self.buildMonthCells();
         self.setView()
         self.showYear();
+        if(self.initialDate){
+          self.initialDate.locale(moment().locale());
+          self.yearMonthStr = self.initialDate.format('ll');
+        }
     };
 
     CalenderCtrl.prototype.setView = function(){

@@ -33,7 +33,7 @@
         </svg>
       </md-button>
       <md-button aria-label="Change Year" class="md-button" md-no-ink="" ng-class="vm.moveCalenderAnimation" ng-click="vm.changeView('YEAR_MONTH')">
-        {{vm.monthList[vm.initialDate.month()]}}{{' '}}{{vm.initialDate.year()}}
+       {{vm.yearMonthStr}}
       </md-button>
       <md-button aria-label="next" class="md-icon-button scroll-button" ng-click="vm.changePeriod('n')" ng-disabled="vm.stopScrollNext">
         <svg height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
