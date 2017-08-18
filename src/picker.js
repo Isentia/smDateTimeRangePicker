@@ -159,6 +159,14 @@
         self.ngModelCtrl.$render();
     };
 
+    CalenderCtrl.prototype.getYearMonthFormat = function(locale){
+      var yearMonthFormat = 'MMM YYYY'
+      if(locale === 'ko'){
+        yearMonthFormat = 'YYYY년 MMM'
+      }
+      return yearMonthFormat ;
+    }
+
     CalenderCtrl.prototype.init = function(){
         var self = this;
         self.buildDateCells();
@@ -168,7 +176,8 @@
         self.showYear();
         if(self.initialDate){
           self.initialDate.locale(moment().locale());
-          self.yearMonthStr = self.initialDate.format('ll');
+          var yearMonthFormat = self.getYearMonthFormat(self.initialDate.locale()) ;
+          self.yearMonthStr = self.initialDate.format(yearMonthFormat);
         }
 
         var daysNames = moment.weekdaysShort().map(function(d){
@@ -276,11 +285,15 @@
             if(self.stopScrollPrevious) return;
             self.moveCalenderAnimation='slideLeft';
             self.initialDate.subtract(1, 'M');
+
         }else{
             if(self.stopScrollNext) return;
             self.moveCalenderAnimation='slideRight';
             self.initialDate.add(1, 'M');
         }
+        self.initialDate.locale(moment().locale());
+        var yearMonthFormat = self.getYearMonthFormat(self.initialDate.locale()) ;
+        self.yearMonthStr = self.initialDate.format(yearMonthFormat);
 
         self.buildDateCells();
         self.$timeout(function(){
