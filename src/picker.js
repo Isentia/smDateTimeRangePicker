@@ -170,6 +170,14 @@
           self.initialDate.locale(moment().locale());
           self.yearMonthStr = self.initialDate.format('ll');
         }
+
+        var daysNames = moment.weekdaysShort().map(function(d){
+          return {
+            'single' : d
+          }
+        });
+        self.picker.daysNames = daysNames ;
+        self.buildDateCellHeader();
     };
 
     CalenderCtrl.prototype.setView = function(){
