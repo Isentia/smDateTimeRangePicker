@@ -360,6 +360,8 @@
             self.initialDate.year(yr).month(mn);
             self.buildDateCells();
             self.view='DATE';
+            var yearMonthFormat = self.getYearMonthFormat();
+            self.yearMonthStr = self.initialDate.format(yearMonthFormat);
         }
     }
 
