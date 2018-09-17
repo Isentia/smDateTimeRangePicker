@@ -1685,6 +1685,7 @@ function smRangePicker (picker){
             maxDate : '@',
             allowClear: '@',
             allowEmpty: '@',
+            okLabel: '@',
             rangeSelectCall : '&'
         },
         terminal:true,
@@ -1732,7 +1733,7 @@ var RangePickerCtrl = function($scope, picker, moment, alerts){
     //allow set start/end date as empty value
     self.allowEmptyDates = self.allowEmpty === 'true' || false;
 
-    self.okLabel = picker.okLabel;
+    self.okLabel = $scope.okLabel || picker.okLabel;
     self.cancelLabel = picker.cancelLabel;
     self.clearLabel = picker.clearLabel;
     self.customRangeLabel = picker.customRangeLabel;
@@ -1991,7 +1992,9 @@ RangePickerCtrl.prototype.selectPresetRange = function(list, divider) {
 
     range.range = list.value;
 
-    range.dateType = self.dateType.value;
+    if (self.dateType) {
+        range.dateType = self.dateType.value;
+    }
 
     self.startDate = range.startDate;
     self.endDate = range.endDate;
@@ -2024,9 +2027,12 @@ RangePickerCtrl.prototype.setNgModelValue = function(startDate, divider, endDate
     var self = this;
     var range = {
         startDate: startDate,
-        endDate: endDate,
-        dateType: self.dateType.value
+        endDate: endDate
     };
+
+    if (self.dateType) {
+        range.dateType = self.dateType.value;
+    }
 
     self.rangeSelectCall({range: range});
 
