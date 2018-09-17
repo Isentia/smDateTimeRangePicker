@@ -19,7 +19,7 @@
     </md-toolbar>
 
     <div layout="column" class="pre-select" role="button" ng-if="!vm.showCustom">
-        <div class="form-group">
+        <div class="form-group" ng-if="vm.dateTypeList">
             <label class="text-center form-label">Display coverage</label>
             <select class="form-control" ng-options="option.key for option in vm.dateTypeList track by option.value" ng-model="vm.dateType">
             </select>
