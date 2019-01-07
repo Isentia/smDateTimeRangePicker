@@ -212,7 +212,11 @@ if (typeof moment === 'undefined') {
         if true than set stopScrollPrevious=true
         */
         if(!angular.isUndefined(self.minDate)){
-            self.stopScrollPrevious	 = self.minDate.unix() >= calStartDate.unix();
+
+            //self.stopScrollPrevious	 = self.minDate.unix() >= calStartDate.unix(); //this is commented for PRDS-10191 fix
+
+            // Fix for PRDS-10191
+            self.stopScrollPrevious=self.initialDate.year()<=self.minDate.year()&& currentMonth==self.minDate.month();
         }
         self.dateCells =[];
         for (var i = 0; i < 6; i++) {
