@@ -1910,7 +1910,8 @@ RangePickerCtrl.prototype.startTimeSelected = function(time){
 
 
 RangePickerCtrl.prototype.endDateSelected = function(date){
-    this.endDate = this.endDate.clone().month(date.month()).date(date.date());
+//  this.endDate = this.endDate.clone().month(date.month()).date(date.date()); // This commented and added below line For PRDS-10883
+    this.endDate = this.endDate.clone().month(date.month()).date(date.date()).year(date.year());
     this.lastRange = { startDate: this.startDate.clone(), endDate: this.endDate.clone() };
     this.scope.$emit('range-picker:endDateSelected');
     if(this.closeOnSelect && this.mode==='date'){
